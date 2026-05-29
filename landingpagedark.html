@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phoneshop | Galaxy S24 Ultra</title>
+    <style>
+        /* Configurações Globais (Reset) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10; /* Fundo Dark Principal */
+            color: #c5c6c7; /* Texto Claro Neutro */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Cabeçalho (Navbar) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #1f2833; 
+            border-bottom: 1px solid #45f3ff20;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #45f3ff; /* Azul Neon */
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #45f3ff;
+        }
+
+        /* Seção Principal (Hero) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8% 40px 8%;
+            min-height: 85vh;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: #45f3ff;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 40px; /* Aumentado para dar mais respiro antes do botão */
+            color: #a9b7c6;
+        }
+
+        /* Botão principal com efeitos premium de brilho */
+        .btn {
+            display: inline-block;
+            background-color: #45f3ff;
+            color: #0b0c10;
+            padding: 14px 35px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(69, 243, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 25px #45f3ff; /* Efeito de brilho neon */
+            transform: scale(1.05) translateY(-2px); /* Leve aumento e subida */
+        }
+
+        /* Área da Imagem Ajustada */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            
+            border: none !important; 
+            outline: none !important;
+
+            /* Esfuma as bordinhas da foto com o fundo preto */
+            mask-image: linear-gradient(to top, transparent 0%, black 8%, black 92%, transparent 100%),
+                        linear-gradient(to left, transparent 0%, black 5%, black 95%, transparent 100%);
+            mask-composite: intersect;
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 8%, black 92%, transparent 100%),
+                                linear-gradient(to left, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-composite: source-in;
+
+            /* Sombra azul neon sutil no fundo */
+            filter: drop-shadow(0px 15px 30px rgba(69, 243, 255, 0.15));
+        }
+
+        /* NOVA SEÇÃO: Cards de Destaques Técnicos */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 60px 8% 80px 8%;
+            background-color: #0b0c10;
+        }
+
+        .feature-card {
+            background-color: #1f2833;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #45f3ff10;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #45f3ff50;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-card h3 {
+            font-size: 28px;
+            color: #45f3ff;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: #c5c6c7;
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 900px) {
+            .features {
+                grid-template-columns: 1fr; /* Transforma os cards em lista vertical no mobile */
+                padding: 40px 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 5%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 5%;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .product-image {
+                max-height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">phoneshop</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Lançamentos</a></li>
+                <li><a href="#">Modelos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>O futuro da tecnologia na sua mão. Conheça o <span>Galaxy S24 Ultra</span></h1>
+            <p>Descubra o auge da inovação móvel. Com uma câmera lendária de 200MP, desempenho SnapDragon 8 Gen 3 e design exclusivo em Titanium, o S24 Ultra redefine todas as possibilidades. Adquira o seu hoje mesmo na phoneshop com frete grátis.</p>
+            <a href="#" class="btn">Ver Modelos</a>
+        </div>
+
+        <div class="hero-image">
+            <img src="fotos24ulta.png" alt="Samsung Galaxy S24 Ultra Titanium Black" class="product-image">
+        </div>
+    </main>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>200 MP</h3>
+            <p>A maior resolução e nitidez em um smartphone fotográfico profissional.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Snapdragon 8 Gen 3</h3>
+            <p>Performance extrema e inteligência artificial rodando direto no aparelho.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Titanium</h3>
+            <p>Estrutura esculpida em titânio de alta resistência, leveza e durabilidade.</p>
+        </div>
+    </section>
+
+</body>
+</html>
